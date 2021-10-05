@@ -25,7 +25,20 @@ namespace ConsoleApp2
         public virtual void Read() { state = state = "Read"; }
         public virtual void Write() { state = state = "Write"; }
         public virtual void Relax() { state = state = "Relax"; }
+        public virtual string getName()
+        {
+            return name;
+        }
+        public void ShowStatus()
+        {
+            Console.WriteLine(state);
+        }
+        public void ShowStatus2()
+        {
+            Console.WriteLine("Read");
+        }
         
+
 
     }
      class GoodStudent : Student {
@@ -46,6 +59,8 @@ namespace ConsoleApp2
 
     }
     class BadStudent : Student{
+        public string name { get; set; }
+
         public BadStudent(string name, int age, string status) : base(name, age)
         {
             Console.WriteLine(name);
@@ -54,6 +69,7 @@ namespace ConsoleApp2
 
             
         }
+        
         public override void Study()
         {
             Read();
@@ -61,17 +77,69 @@ namespace ConsoleApp2
             Relax();
         }
     }
+    class Group
+    {
+        private string groupName;
+        private List<Student> list = new List<Student>();
+        public Group(string name)
+        {
+            groupName = name;
+        }
+        public void AddStudent(Student st)
+        {
+            list.Add(st);
+        }
+
+        public void GetInfo()
+        {
+            Console.WriteLine("Group: " + groupName);
+            foreach (Student s in list)
+            {
+                Console.WriteLine(s.getName() + " ");
+            }
+        }
+        public void GetFullInfo()
+        {
+            Console.WriteLine("Group: " + groupName);
+            foreach (Student s in list)
+            {
+                Console.WriteLine(s.getName()); s.ShowStatus();
+            }
+
+        }
+        public void GetFullInfo2()
+        {
+            Console.WriteLine("Group: " + groupName);
+            foreach (Student s in list)
+            {
+                Console.WriteLine(s.getName()); s.ShowStatus2();
+            }
+        }
+       
+    }
     public class Debug  {
         static void Main(string[] args)
         {
+           
             GoodStudent student = new GoodStudent("Dima", 13, " Exellent Student");
             BadStudent student1 = new BadStudent("Baklan", 13, " Worse Student");
             BadStudent student2 = new BadStudent("Max", 13, " Bad Student");
+            Group G = new Group("G");
+            student.Study();
+            student1.Study();
+            student2.Study();
+            G.AddStudent(student1);
+            G.AddStudent(student2);
+            G.GetFullInfo();
+            Group A = new Group("A");
+            A.AddStudent(student);
+            A.GetFullInfo2();
 
 
 
-        }
+            }
 
     }
     
 }
+
