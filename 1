@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
-    public class Student
+   abstract class Student
     {
-        string name;
+        string name, state;
         int age;
         public Student(string name)
         {
@@ -21,14 +21,14 @@ namespace ConsoleApp2
             Console.WriteLine("");
         }
 
-        void Study() { }
-        void Read() { }
-        void Write() { }
-        void Relax() { }
+        public abstract void Study();
+        public virtual void Read() { state = state = "Read"; }
+        public virtual void Write() { state = state = "Write"; }
+        public virtual void Relax() { state = state = "Relax"; }
         
 
     }
-    public class GoodStudent : Student {
+     class GoodStudent : Student {
 
         public GoodStudent(string name, int age, string status) : base(name, age) {
             
@@ -36,16 +36,30 @@ namespace ConsoleApp2
             Console.Write(age);
             Console.WriteLine(status);
         }
+        public override void Study()
+        {
+            Read();
+            Write();
+            Relax();
+        }
+
 
     }
-    public class BadStudent : Student{
+    class BadStudent : Student{
         public BadStudent(string name, int age, string status) : base(name, age)
         {
             Console.WriteLine(name);
             Console.Write(age);
             Console.WriteLine(status);
+
+            
         }
-        
+        public override void Study()
+        {
+            Read();
+            Write();
+            Relax();
+        }
     }
     public class Debug  {
         static void Main(string[] args)
@@ -54,7 +68,6 @@ namespace ConsoleApp2
             BadStudent student1 = new BadStudent("Baklan", 13, " Worse Student");
             BadStudent student2 = new BadStudent("Max", 13, " Bad Student");
 
-           
 
 
         }
