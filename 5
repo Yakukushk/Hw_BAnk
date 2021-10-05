@@ -1,0 +1,74 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Figure
+{
+    abstract class Figure {
+       public virtual void Triangel() {
+            double A, B, C, p, S;
+            Console.WriteLine("Введите сторону A: ");
+            A = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("Введите сторону B: ");
+            B = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("Введите сторону C: ");
+            C = Convert.ToDouble(Console.ReadLine());
+
+            p = (A + B + C) / 2;
+
+            S = Math.Sqrt(p * (p - A) * (p - B) * (p - C));
+
+            Console.WriteLine("Площадь равна: {0}", S);
+            Console.ReadLine();
+        }
+        public virtual void Rectangle_Area() {
+            Console.Write("Длина: ");
+            int sideA = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Ширина: ");
+            int sideB = Convert.ToInt32(Console.ReadLine());
+
+            int area = sideA * sideB;
+
+            Console.WriteLine("Площадь прямоугольника: {0}", area);
+            Console.ReadLine();
+        }
+        public virtual void Circle() {
+           
+                double r,  area;
+                Console.Write("Радиус : ");
+                r = Convert.ToDouble(Console.ReadLine());
+               area = 3.14 * Math.Pow(r, 2); 
+                Console.WriteLine("Площадь : {0}", area);
+                Console.ReadKey();
+            
+        }
+        public virtual void Rhombus() {
+            double a, b, c;
+            
+            Console.Write("Введите сторону b");
+            b = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите сторону c");
+            c = Convert.ToDouble(Console.ReadLine());
+            a= b* c / 2;
+            Console.WriteLine("Ответ ", a);
+
+
+
+        }
+       
+
+
+    }
+    class Program 
+    {
+        static void Main(string[] args)
+        {
+            
+
+        }
+    }
+}
