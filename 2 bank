@@ -1,3 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace bank
 {
     class Program
@@ -7,18 +13,22 @@ namespace bank
 
             double HrnToUsa = 26.63f;
             double HrnToEuro = 30.87f;
-            double Hrn;
+            double Hrn_Dolar_Euro;
+           
 
            
-            public Converter(double HrnToUsa, double HrnToEuro)
+            public Converter()
             {
-                this.HrnToUsa = HrnToUsa;
-                this.HrnToEuro = HrnToEuro;
-                Console.WriteLine("Enter ur nums");
-                this.Hrn = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine(Hrn + "Usa = " + Hrn * HrnToUsa);
                 
-                Console.WriteLine(Hrn + "Euro = " + Hrn * HrnToEuro);
+                Console.WriteLine("Enter ur nums");
+                this.Hrn_Dolar_Euro = Convert.ToDouble(Console.ReadLine());
+               
+                
+                Console.WriteLine( Hrn_Dolar_Euro + " Usa = " + Hrn_Dolar_Euro * HrnToUsa);
+                Console.WriteLine(Hrn_Dolar_Euro + " Hrn = " + Hrn_Dolar_Euro / HrnToUsa);
+                
+                Console.WriteLine(Hrn_Dolar_Euro + " Euro = " + Hrn_Dolar_Euro * HrnToEuro);
+                Console.WriteLine(Hrn_Dolar_Euro + " Hrn = " + Hrn_Dolar_Euro / HrnToEuro);
                 
                 Console.ReadKey();
 
@@ -34,7 +44,7 @@ namespace bank
 
         static void Main(string[] args)
         {
-            Converter st = new Converter(26.63f, 30.87f);
+            Converter st = new Converter();
 
         }
     }
