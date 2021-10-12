@@ -1,0 +1,142 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Figure
+{
+    abstract class Figure {
+        public abstract double area();
+        public abstract double per();
+        public abstract string str();
+        public void Result() {
+            System.Console.WriteLine("per and area EL "+ str()+ ": " + per() + "   " + area());
+            
+
+        }
+    
+
+    }
+    class Triangle : Figure  {
+        double A, B, C, p, S;
+        public Triangle() {
+            
+            Console.WriteLine("Введите сторону A: ");
+            A = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("Введите сторону B: ");
+            B = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("Введите сторону C: ");
+            C = Convert.ToDouble(Console.ReadLine());
+
+
+           
+        }
+        public override double area()
+        {
+           return( S = Math.Sqrt(p * (p - A) * (p - B) * (p - C)));
+        }
+        public override double per()
+        {
+           return( p = (A + B + C) / 2);
+        }
+        public override string str()
+        {
+            return ("Triangle");
+        }
+    }
+    class Rectangle : Figure {
+        double S, A, B;
+        public Rectangle()
+        {
+            Console.Write("Длина: ");
+             A = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Ширина: ");
+            B = Convert.ToInt32(Console.ReadLine());
+
+             
+
+            
+            
+        }
+        public override double area()
+        {
+            return(S = A * B);
+        }
+        public override double per()
+        {
+            return ((A + B)/2);
+        }
+        public override string str()
+        {
+            return ("Rectangle");
+        }
+    }
+    class Circle : Figure {
+        double r, S;
+      public  Circle()
+        {
+            Console.Write("Радиус : ");
+            r = Convert.ToDouble(Console.ReadLine());
+           
+            
+        }
+        public override double area()
+        {
+          return(  S = 3.14 * Math.Pow(r, 2));
+        }
+        public override double per()
+        {
+            return 0;
+        }
+        public override string str()
+        {
+            return ("Circle");
+        }
+    }
+    class Rhombus : Figure {
+
+        double S, b, c;
+        public Rhombus()
+        {
+            Console.Write("Введите сторону b : ");
+            b = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите сторону c :  ");
+            c = Convert.ToDouble(Console.ReadLine());
+            
+        }
+        public override double area()
+        {
+            return (S = b * c / 2);
+        }
+        public override double per()
+        {
+            return(S = 4*b);
+        }
+        public override string str()
+        {
+            return ("Rhombus");
+        }
+    }
+    class Program 
+    {
+        static void Main(string[] args)
+        {
+            Figure fg = new Triangle();
+             Figure re = new Rectangle();
+            Figure cr = new Circle();
+            Figure rh = new Rhombus();
+            fg.Result();
+            re.Result();
+            cr.Result();
+            rh.Result();
+
+
+
+
+
+        }
+    }
+}
